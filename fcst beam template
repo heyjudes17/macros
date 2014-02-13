@@ -1,0 +1,39 @@
+Sub Prep_Beam_Template()
+'
+' Prep_Beam_Template Macro
+'
+' Keyboard Shortcut: Ctrl+t
+'
+Sheets(2).Range("A9:A190").Font.Name = "Tahoma"
+Sheets(2).Range("A9:A190").Font.Size = 10
+Sheets(2).Range("A9:A190").NumberFormat = "@"
+Sheets(2).Range("C9:C190").Font.Name = "Tahoma"
+Sheets(2).Range("C9:C190").Font.Size = 10
+Sheets(2).Range("C9:C190").NumberFormat = "0.00000"
+Sheets(2).Range("B9:B190").Font.Name = "Tahoma"
+Sheets(2).Range("B9:B190").Font.Size = 10
+
+    If Range("G7") = "Yes" Then
+    
+        MsgBox ("Ready to Prep")
+    
+        Sheets(2).Range("A9:A85").Value = Sheets(1).Range("A14:A90").Value
+        
+         'Range("A14:A44").Select
+         'Selection.Copy
+        ' ActiveSheet.Next.Select
+        ' Range("A9:A188").Paste
+        ' ActiveSheet.Paste
+        ' Application.CutCopyMode = False
+        ' Selection.Copy
+        ' Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+         '   :=False, Transpose:=False
+       ' Application.CutCopyMode = False
+       Sheets(2).Range("A9:A85").RemoveDuplicates Columns:=1, Header:=xlYes
+       Application.Run "TM1RECALC1"
+       ' ActiveSheet.Range("$A$9:$A$39").RemoveDuplicates Columns:=1, Header:=xlYes
+       ' Range("E12").Select
+       ' Application.Run "TM1RECALC1"
+       ' Range("D12").Select
+    End If
+End Sub
